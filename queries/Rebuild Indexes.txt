@@ -1,0 +1,15 @@
+/*
+-- TO rebuild the index online use the below query. 
+-- Online rebuild helps in reduce the blocking. 
+-- use offline option when the table is not very trasactional or we do the rebuild in a downtime. 
+-- please confirm the maxdop value with the project team before execution
+*/
+
+alter index [index name] on table name rebuild with (ONLINE = ON, MAXDOP = 2) 	Copy Option. 
+
+
+
+
+--TO Reorganize use the below query
+
+alter index [index name] on table name reorganize

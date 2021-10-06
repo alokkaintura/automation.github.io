@@ -1,0 +1,253 @@
+body {
+    font-family: 'Quicksand', Helvetica, Arial, Lucida, sans-serif;
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.7em;
+    font-weight: 400;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin: 0px;
+    background: none;
+    font-weight: 700;
+    line-height: 1.3em;
+    font-family: 'Quicksand', Helvetica, Arial, Lucida, sans-serif;
+}
+
+textarea {
+    overflow: hidden;
+}
+
+p {
+    position: relative;
+    line-height: 1.8em;
+}
+
+
+/* Typography */
+
+h1 {
+    font-size: 72px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h4 {
+    font-size: 22px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 18px;
+}
+
+.auto-container {
+    position: static;
+    max-width: 1200px;
+    padding: 0px 15px;
+    margin: 0 auto;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+}
+
+
+/*
+====================================================================
+ Navbar
+====================================================================
+
+***/
+
+
+/*
+====================================================================
+Page Title
+====================================================================
+
+***/
+
+.page-title {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    padding: 110px 0px 110px;
+    background-color: #141d38;
+    margin-bottom: 50px;
+}
+
+.page-title .pattern-layer-one {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.page-title .auto-container {
+    position: relative;
+}
+
+.page-title h2 {
+    position: relative;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.page-title h4 {
+    position: relative;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.page-breadcrumb {
+    position: relative;
+    margin-top: 20px;
+}
+
+.page-breadcrumb li {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    padding-right: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.page-breadcrumb li:after {
+    position: absolute;
+    content: "/";
+    right: -2px;
+    top: -1px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'FontAwesome';
+}
+
+.page-breadcrumb li:last-child::after {
+    display: none;
+}
+
+.page-breadcrumb li:last-child {
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+.page-breadcrumb li a {
+    color: #ffffff;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.page-breadcrumb li a:hover {
+    color: #ffffff !important;
+}
+
+.container {
+    padding: 50px 0px;
+    width: 70%;
+    margin: auto;
+}
+
+#myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 2px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#myUL {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#myUL li a {
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    display: block
+}
+
+#myUL li a:hover:not(.header) {
+    background-color: #eee;
+}
+
+
+/****************************************************/
+
+.containers {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.containers .hover-button {
+    height: 55px;
+    width: 180px;
+    border: none;
+    margin-right: 90px;
+    font-size: 16px;
+    border-radius: 0 25px;
+    background-image: linear-gradient(to right top, #0067b8, #383f56);
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.5s
+}
+
+.containers .hover-button:hover {
+    height: 50px;
+    width: 170px;
+    border: none;
+    border-radius: 25px 0;
+    background-image: linear-gradient(to right top, #0067b8, #383f56);
+    cursor: pointer;
+    color: #fff
+}
