@@ -11,14 +11,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>SOP</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
+    <!-- Font Awesome icons (free version)--> 
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
 </head>
 <style>
+    @media print {
+        html,
+        body {
+            display: none;
+            /* hide whole page */
+        }
+    }
+    
     body {
         -webkit-user-select: none;
         -webkit-touch-callout: none;
@@ -42,8 +49,16 @@
         color: white;
     }
     
+    .logo {
+        width: 50px;
+        fill: white;
+        padding-right: 15px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
     .inner-header {
-        height: 65vh;
+        height: 40vh;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -60,7 +75,7 @@
     .waves {
         position: relative;
         width: 100%;
-        height: 15vh;
+        height: 10vh;
         margin-bottom: -7px;
         /*Fix for safari gap*/
         min-height: 100px;
@@ -121,6 +136,12 @@
             font-size: 24px;
         }
     }
+
+    textarea{
+        color: #0067b8;
+        font-size: 12px;
+        background-color: #0068b810;
+    }
 </style>
 <script>
 </script>
@@ -143,7 +164,8 @@ of Simple CSS Waves-->
                 />
             </g>
             </svg>
-            <h1>How to speed up the replication when there are large tables to be replicated </h1>
+            <h1>How to configure replication using snapshot</h1>
+            <br> <a href="/index.html" style="color: white;text-decoration: underline;">Home</a>
         </div>
 
         <!--Waves Container-->
@@ -174,20 +196,31 @@ of Simple CSS Waves-->
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!--<h2 class="section-heading">How to configure replication using replication support only </h2>-->
-                    <p>
-                        In Transactional replication, when we are replicating large tables then there is a fair chance to face replication latency. Whenever there is a bulk operation happened on replicated tables, latency comes by default because replication send the transaction
-                        sequentially and dividing each operation in the form of commands. </p>
-                    <p>This latency between Distributor and Subscriber can be minimized by additional setting in Distribution agent. We called this setting as <span class="head">Subscritionstream How to enable this setting </span>
-                    </p>
-                    <p>
-                        Go to DA job properties and go to step and edit it. Here we need to add -Subscritionstreams int value (ex: -Subscritionstreams 15) in last and restart the job. <br> Now DA job will run with 15 threads and replicate the pending
-                        commands very fast.
-                    </p>
-                    <img src="/soplink/replication2.png" alt="">
+                    
+<p>There are when We need to do a manual failover of SQL Server AlwaysOn Availability Groups.  Sometimes the replicas are not synchronized , in such scenarios , We have to perform a forced failover.  Below are the Steps we need to follow
+    when Databases are Synchronized and not Synchronized :<br> 1. To check the status of Always On go to the AG folder and right click and click show dashboard.
+</p>
+<img src="/sop/always/1.png" alt="">
+<img src="/sop/always/2.png" alt=""><br><br>
+<p>2. If replicas are not in sync, It means they are in asynchronous mode. Go to properties of AG. </p>
+<img src="/sop/always/3.png" alt=""><br><br>
+<p>3. Change the mode to synchronous commit. Failover mode will be manual. </p>
+<img src="/sop/always/4.png" alt=""><br><br>
+<p>4. Again check the dashboard. </p>
+<img src="/sop/always/5.png" alt=""><br><br>
+<p>5. Once verified, Go for failover either by failover link in dashboard or right click on AG and select failover. </p>
+<img src="/sop/always/6.png" alt=""><br><br>
+<p>6. Complete the wizard. </p>
+<img src="/sop/always/7.png" alt=""><br><br>
+<p>7. Click on Finish. </p>
+<img src="/sop/always/8.png" alt=""> <br><br>
+<p>After failover completion, go to new primary and verify the dashboard. </p>
+
                 </div>
             </div>
         </div>
     </article>
+
     <!-- Footer--><br><br><br>
     <footer class="border-top">
         <div class="container px-4 px-lg-5">
@@ -224,6 +257,7 @@ of Simple CSS Waves-->
             </div>
         </div>
     </footer>
+
 
 </body>
 

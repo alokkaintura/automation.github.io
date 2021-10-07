@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>SOP</title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+</head>
+<style>
+    @media print {
+        html,
+        body {
+            display: none;
+            /* hide whole page */
+        }
+    }
+    
+    body {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    span.head {
+        font-weight: 700;
+    }
+    
+    .section-heading {
+        color: #0067b8;
+    }
+    
+    .header {
+        position: relative;
+        text-align: center;
+        background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+        color: white;
+    }
+    
+    .logo {
+        width: 50px;
+        fill: white;
+        padding-right: 15px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .inner-header {
+        height: 40vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .flex {
+        /*Flexbox for containers*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .waves {
+        position: relative;
+        width: 100%;
+        height: 10vh;
+        margin-bottom: -7px;
+        /*Fix for safari gap*/
+        min-height: 100px;
+        max-height: 150px;
+    }
+    
+    .content {
+        position: relative;
+        height: 20vh;
+        text-align: center;
+        background-color: white;
+    }
+    /* Animation */
+    
+    .parallax>use {
+        animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+    }
+    
+    .parallax>use:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 7s;
+    }
+    
+    .parallax>use:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 10s;
+    }
+    
+    .parallax>use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 13s;
+    }
+    
+    .parallax>use:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 20s;
+    }
+    
+    @keyframes move-forever {
+        0% {
+            transform: translate3d(-90px, 0, 0);
+        }
+        100% {
+            transform: translate3d(85px, 0, 0);
+        }
+    }
+    /*Shrinking for mobile*/
+    
+    @media (max-width: 768px) {
+        .waves {
+            height: 40px;
+            min-height: 40px;
+        }
+        .content {
+            height: 30vh;
+        }
+        h1 {
+            font-size: 24px;
+        }
+    }
+
+    textarea{
+        color: #0067b8;
+        font-size: 12px;
+        background-color: #0068b810;
+    }
+</style>
+<script>
+</script>
+
+<body>
+    <!--Hey! This is the original version
+of Simple CSS Waves-->
+
+    <div class="header">
+
+        <!--Content before waves-->
+        <div class="inner-header flex">
+            <!--Just the logo.. Don't mind this-->
+
+            <path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
+            <g>
+                <path fill="#fff" d="M250.4,0.8C112.7,0.8,1,112.4,1,250.2c0,137.7,111.7,249.4,249.4,249.4c137.7,0,249.4-111.7,249.4-249.4
+    C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1-34.1-2.3-75.4,13.2-104.1
+    c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3,62.4c-19.8,19.1-51.6,26.9-100.2,24.6l1.8-39.7		c35.9,1.6,59.7-2.9,70.8-13.6c8.9-8.6,11.1-22.9,13.5-39.6c6.3-42,14.8-99.4,141.4-99.4h41L333,166c-12.6,16-45.4,68.2-31.2,96.2	c9.2,18.3,41.5,25.6,91.2,24.2l1.1,39.8C390.5,326.2,387.1,326.3,383.8,326.3z"
+                />
+            </g>
+            </svg>
+            <h1>How to configure replication using snapshot</h1>
+            <br> <a href="/index.html" style="color: white;text-decoration: underline;">Home</a>
+        </div>
+
+        <!--Waves Container-->
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="parallax">
+    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+    </g>
+    </svg>
+        </div>
+        <!--Waves end-->
+
+    </div>
+    <!--Header ends-->
+    <br><br><br>
+
+
+    <!--Content ends-->
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!--<h2 class="section-heading">How to configure replication using replication support only </h2>-->
+                    
+<p>To configure the transactional replication using snapshot, we need to configure the
+    distributor, Publisher and Subscriber. Also we need to handshake each server with another
+    one. Below are the detailed steps for configuring replication from scratch.
+<br><br>
+<span class="head">Note: Change the variables and location according to env.</span>    <br>
+Lets assume below are the server details and default instance of SQL server is installed on
+each server. <br>
+1. SQLNodeDist = Distributor Server <br>
+2. SQLNodeSubs = Subscriber Server <br>
+3. SQLNodePubl = Publisher Server <br>
+Step 1: Configure Distributor <br>
+Connect SSMS on Distributor Server and execute below command
+</p>
+
+<textarea name="" id="" cols="90" rows="18">
+    USE MASTER
+    GO
+    --Declaring variables
+    DECLARE @DistributorServer SYSNAME, @DistributorAdminDBPassword VARCHAR(60)
+    SELECT @DistributorServer = 'SQLNodeDist'
+    SELECT @DistributorAdminDBPassword = 'Test123$'
+    --Set the name and then print the name of the distributor.
+    DECLARE @DistributorServer_msg varchar (50)
+    SET @DistributorServer_msg = ' The name of the distributor server is '
+    PRINT char (10) + char (13) + @DistributorServer_MSG + @DistributorServer + Char (10)
+    + Char (13) SELECT @DistributorServer as DistributionServer, @DistributorAdminDBPassw
+    ord as DistributorAdminDBPassword
+    EXEC SP_ADDDISTRIBUTOR @distributor = @DistributorServer, @password = @DistributorA
+    dminDBPassword
+    GO
+
+</textarea>
+
+<p><br> Step 2: Add Distribution database on distributor server <br>
+    Connect SSMS on Distributor Server and execute below command <br>
+    </p>
+
+    <textarea name="" id="" cols="90" rows="18">
+        USE MASTER
+GO
+DECLARE @DistributorAdminDBPassword varchar(60)
+DECLARE @dataFolder varchar(1000)
+DECLARE @logFolder varchar(1000)
+DECLARE @dataFileSize INT
+DECLARE @LOGFileSIze INT
+SELECT @DistributorAdminDBPassword = 'Test123$'
+SELECT @dataFolder = 'E:\SQLDATA\'
+SELECT @logFolder = 'F:\SQLLOG\'
+SELECT @dataFileSize = '200'
+SELECT @LOGFileSIze = '10'
+SELECT 'Configuration values are',@DistributorAdminDBPassword
+DistributorAdminDBPassword ,@dataFolder dataFolder, @logFolder
+logFolder , @dataFileSize dataFileSize ,@LOGFileSIze LOGFileSIze
+--needs to be change as per ENV
+EXEC SP_ADDDISTRIBUTIONDB
+@database = N'distribution'
+,@data_folder = @dataFolder
+,@data_file = N'distribution.MDF'
+,@data_file_size = @dataFileSize
+,@log_folder = @logFolder
+,@log_file = N'distribution.LDF'
+,@log_File_Size = @LOGFileSize
+,@min_distretention = 0
+,@max_distretention = 72
+,@history_retention = 48
+,@security_mode = 1
+--,@login = @DistributorAgent
+,@Password = @DistributorAdminDBPassword
+GO
+    </textarea> 
+
+    <p> <br>
+        Step 3: Add Remote Publishers(Telling the Distributor server that these are your possible
+        publishers) <br>
+        Connect SSMS on Distributor Server and execute below command <br>
+
+    </p>
+    <textarea name="" id="" cols="90" rows="10">
+        DECLARE @PublisherServer sysname,@AltSnapshotFolder varchar(600)
+SELECT @PublisherServer = 'SQLNodePubl'
+SELECT @AltSnapshotFolder = '\\SQLNodedist\ReplSnapshot\'
+SELECT @PublisherServer PublisherServer ,@AltSnapshotFolder AltSnapshotFolder
+EXEC sp_adddistpublisher @publisher = @PublisherServer, @distribution_db = N'distribut
+ion', @security_mode = 1, @working_directory = @AltSnapshotFolder
+, @trusted = N'false', @thirdparty_flag = 0, @publisher_type = N'MSSQLSERVER'
+GO
+
+    
+    </textarea>
+
+<p> <br>
+    Step 4: Add Remote Distributor on Publisher server(Telling the publisher server that this is
+    your distributor) <br>
+    Connect SSMS on Publisher Server and execute below command <br>
+    
+</p>
+ <textarea name="" id="" cols="90" rows="10">
+    USE MASTER
+    DECLARE @DistributorServer VARCHAR(500)
+    SELECT @DistributorServer = 'SQLNodeDist'
+    DECLARE @DistributorAdminPassword varchar (500)
+    SELECT @DistributorAdminPassword = 'Test123$'
+    SELECT @DistributorAdminPassword As DistributorAdminPassword , @DistributorServer AS
+    DistributorServer
+    EXEC sp_adddistributor @distributor = @DistributorServer, @password = @DistributorAdmi
+    nPassword
+    GO
+    
+ </textarea>
+
+<p>
+<br>Step 5: Add Remote Distributor on Publisher server(Telling the publisher server that this is
+your distributor) <br>
+Connect SSMS on Publisher Server and execute below command <br>
+</p>
+
+<textarea name="" id="" cols="90" rows="10">
+    USE MASTER
+DECLARE @SubscriberServer varchar(500)
+SELECT @SubscriberServer = 'SQLNodeSubs'
+SELECT @SubscriberServer as SubscriberServer
+EXEC SP_ADDSUBSCRIBER @subscriber = @SubscriberServer, @type = 0, @description = N''
+GO
+</textarea>
+
+<p>
+<br>
+<span class="head">
+Initial setup of relationship between Distributor, Publisher and Subscriber is complete.  </span> <br><br>
+Step 6: Add Pull subscritions. <br>
+Connect SSMS on Subscriber Server and execute below command <br>
+----- Adding the Subscribers. Connect to the first Subscriber first, execute it. <br>
+Repeat the same process for the second Subscriber again. <br>
+</p>
+
+<textarea name="" id="" cols="90" rows="17">
+    USE Reporting_Subscriber
+    GO
+    EXEC SP_ADDPULLSUBSCRIPTION @publisher = 'SQLNodePubl'
+    , @publication = 'Trans_Publication_PublisherDB'
+    , @publisher_db = 'Publisherdb' , @independent_agent = N'True'
+    , @subscription_type = N'pull', @description = N'', @update_mode = N'read only'
+    , @immediate_sync = 0
+    --- Adding the job for the subscriber.
+    EXEC sp_addpullsubscription_agent @publisher = 'SQLNodePubl', @publisher_db = 'Publish
+    erDB', @publication = 'Trans_Publication_PublisherDB', @distributor = 'SQLNodeDist' ,
+    @distributor_security_mode = 1, @distributor_login = N'', @distributor_password = N'',
+    @enabled_for_syncmgr = N'False', @frequency_type = 64, @frequency_interval = 0, @freq
+    uency_relative_interval = 0, @frequency_recurrence_factor = 0, @frequency_subday = 0,
+    @frequency_subday_interval = 0, @active_start_time_of_day = 0, @active_end_time_of_day
+    = 235959, @active_start_date = 20150627, @active_end_date = 99991231, @alt_snapshot_f
+    older = '\\SQLNodedist\ReplSnapshot\', @working_directory = N'', @use_ftp = N'False',
+    @job_login = null, @job_password = null, @publication_type = 0
+    GO
+</textarea>
+
+<p>
+    <br>Step 7: Create publications <br>
+    Connect SSMS on Publisher Server and execute below command <br> <br>
+</p>
+
+<textarea name="" id="" cols="90" rows="30">
+    USE PublisherDB
+    GO
+    EXEC sp_replicationdboption @dbname = 'PublisherDB'
+    ,@optname = 'Publish'
+    ,@value = 'true'
+    GO
+    exec [Publisherdb].sys.sp_addlogreader_agent @job_login = null, @job_password = null,
+    @publisher_security_mode = 1
+    GO
+    exec [Publisherdb].sys.sp_addqreader_agent @job_login = null, @job_password = null, @f
+    rompublisher = 1
+    GO
+    ---- Adding the transactional publication
+    USE Publisher
+    GO
+    EXEC sp_addpublication @publication = 'Trans_Publication_PublisherDB'
+    , @description = N'Transactional publication'
+    , @sync_method = N'concurrent'
+    , @retention = 0, @allow_push = N'true', @allow_pull = N'true'
+    , @allow_anonymous = N'false', @enabled_for_internet = N'false'
+    , @snapshot_in_defaultfolder = N'false'
+    ,@alt_snapshot_folder = '\\SQLNodedist\ReplSnapshot\'
+    , @compress_snapshot = N'false', @ftp_port = 21
+    , @ftp_login = N'anonymous'
+    , @allow_subscription_copy = N'false'
+    , @add_to_active_directory = N'false', @repl_freq = N'continuous'
+    , @status = N'active', @independent_agent = N'true'
+    , @immediate_sync = N'false', @allow_sync_tran = N'false'
+    , @autogen_sync_procs = N'false'
+    , @allow_queued_tran = N'false', @allow_dts = N'false'
+    , @replicate_ddl = 1, @allow_initialize_from_backup = N'false'
+    , @enabled_for_p2p = N'false', @enabled_for_het_sub = N'false'
+    GO
+    EXEC SP_ADDPUBLICATION_SNAPSHOT
+    @publication = 'Trans_Publication_PublisherDB'
+    , @frequency_type = 4
+    , @frequency_interval = 1
+    , @frequency_relative_interval = 0, @frequency_recurrence_factor = 0
+    , @frequency_subday = 8, @frequency_subday_interval = 4, @active_start_t
+    ime_of_day = 0
+    , @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_
+    date = 0
+    , @job_login = null, @job_password = null
+    , @publisher_security_mode = 1
+</textarea>
+
+<p>
+ <br>   Publication has been setup now <br>
+THE NEXT STEP IS TO ADD AN ARTICLE TO THE PUBLICATION and after adding an article we
+need to run the sp_addsubscription proc on the Publisher <br><br>
+<span class="head">Some ground work to limit the snapshot generation
+</span>
+</p>
+<textarea name="" id="" cols="90" rows="12">
+    use Publisherdb
+DECLARE @DbName varchar(500)
+DECLARE @PublicationName varchar(500)
+SELECT @DbName = DB_NAME()
+SELECT @PublicationName = name from syspublications
+PRINT 'Adding article on the database ' + @DbName + char(10) + char(13)
+PRINT 'Publication name is ' + @PublicationName + char(10) + char(13)
+/*This will ensure that the snapshot will run only for the
+ tables added and not the whole snapshot.*/
+EXEC sp_changepublication
+@publication = @PublicationName,
+@property = 'allow_anonymous' ,
+@value = 'false'
+EXEC sp_changepublication
+@publication = @PublicationName,
+@property = 'immediate_sync' ,
+@value = 'false'
+</textarea>
+
+<p>
+    <br>Step 8: Add article <br>
+    Connect SSMS on Publisher Server and execute below command <br><br>
+</p>
+<textarea name="" id="" cols="90" rows="14">
+    use [Publisherdb]
+exec sp_addarticle @publication = N'Trans_Publication_PublisherDB', @article = N'UserP
+asswords', @source_owner = N'dbo', @source_object = N'UserPasswords', @type = N'logbas
+ed', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_
+option = 0x00000000080350DF, @identityrangemanagementoption = N'none', @destination_ta
+ble = N'UserPasswords', @destination_owner = N'dbo', @status = 24, @vertical_partition
+= N'false', @ins_cmd = N'CALL [dbo].[sp_MSins_dboUserPasswords]', @del_cmd = N'CALL
+[dbo].[sp_MSdel_dboUserPasswords]', @upd_cmd = N'SCALL
+[dbo].[sp_MSupd_dboUserPasswords]'
+GO
+use [Publisherdb]
+GO
+EXEC SP_ADDSUBSCRIPTION @publication = 'Trans_Publication_PublisherDB', @subscriber =
+'SQLNodeSubs', @destination_db = 'Reporting_Subscriber', @subscription_type = N'Pull',
+@sync_type = N'Automatic', @article = N'ALL', @update_mode = N'read
+only', @subscriber_type = 0
+--EXEC SP_REFRESHSUBSCRIPTIONS @publication = N'Trans_Publication_PublisherDB'
+
+</textarea>
+
+<p>
+    <br>Step 8: Start the snapshot agent job. <br>
+    Once we added the article, start the snapshot agent job. Also check the Log reader and
+    Distribution agent job, and their schedule. Adjust the schedule according to environment. <br><br>
+    Step 9: Once the previous snapshot delivered, we can add more article to the publication
+    and now this time after adding article we only need to refresh the subscrition as it is already
+    added in first time. <br>
+</p>
+
+<textarea name="" id="" cols="90" rows="12">
+    use [Publisherdb]
+exec sp_addarticle @publication = N'Trans_Publication_PublisherDB', @article = N'UserP
+asswords', @source_owner = N'dbo', @source_object = N'UserPasswords', @type = N'logbas
+ed', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_
+option = 0x00000000080350DF, @identityrangemanagementoption = N'none', @destination_ta
+ble = N'UserPasswords', @destination_owner = N'dbo', @status = 24, @vertical_partition
+= N'false', @ins_cmd = N'CALL [dbo].[sp_MSins_dboUserPasswords]', @del_cmd = N'CALL
+[dbo].[sp_MSdel_dboUserPasswords]', @upd_cmd = N'SCALL
+[dbo].[sp_MSupd_dboUserPasswords]'
+GO
+EXEC SP_REFRESHSUBSCRIPTIONS @publication = N'Trans_Publication_PublisherDB'
+</textarea>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer--><br><br><br>
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="https://www.linkedin.com/company/scalability-engineers/?viewAsMember=true">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/scalabilityengineers/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.instagram.com/scalabilityengineers/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; Scalability Enigineers</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
