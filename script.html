@@ -594,7 +594,7 @@
                     --Scripting replication configuration. <br> /****** Please Note: For security reasons, all password parameters were scripted with either NULL or an empty string. ******/<br> -- Use the below query for creating the publication<br> --Installing
                     the server as a Distributor. <br></p>
                 <br>
-                <textarea id="publication" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                <textarea id="publication" cols="90" rows="13" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
                         use master
                         exec sp_adddistributor @distributor = N'LAPTOP-A0TI5JNU\D1', @password = N''
                         GO
@@ -691,7 +691,7 @@ Is my transactional replication healthy?<br>
 How far behind is my transactional subscription?<br>
 How long will it take a transaction committed now to reach a Subscriber in transactional replication?*/<br></p>
             <br>
-            <textarea id="transactsql" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+            <textarea id="transactsql" cols="90" rows="13" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
                 USE [distribution]
  
 IF OBJECT_ID('Tempdb.dbo.#ReplStats') IS NOT NULL
@@ -943,7 +943,7 @@ Publisher database.<br>
 Replication Agent Name.<br>
 Below is the script:*/<br></p>
             <br>
-            <textarea id="tsqlcode" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+            <textarea id="tsqlcode" cols="90" rows="13" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
                 SELECT DistributionAgent.subscriber_db 
        [Subscriber DB], 
        DistributionAgent.publication                              [PUB Name], 
@@ -1062,7 +1062,7 @@ WHERE  DistributionAgent.subscriber_db <> 'virtual'</textarea>
                     fragmentation <br> , OBJECT_ID(N'ccard_primary_NCpartitioned') -- objectid for which we need to check fragmentation, keep NULL for all Objects. <br> , NULL , NULL, 'LIMITED') AS ps <br> JOIN SYS.INDEXES SI on PS.object_id = si.object_id
                     and ps.index_id = si.index_id <br> --WHERE avg_fragmentation_in_percent >= 10" </p> <br>
                 <br> --><br><br>
-                <textarea id="fragmentation" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                <textarea id="fragmentation" cols="90" rows="13" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
                     SELECT
                     ps.database_id AS 'databaseID'
                     , QUOTENAME(DB_NAME(ps.database_id)) AS 'databaseName'
