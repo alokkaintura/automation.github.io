@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>SOP</title>
+    <!-- Font Awesome icons (free version)--> 
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+</head>
+<style>
+    @media print {
+        html,
+        body {
+            display: none;
+            /* hide whole page */
+        }
+    }
+    
+    body {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    span.head {
+        font-weight: 700;
+    }
+    
+    .section-heading {
+        color: #0067b8;
+    }
+    
+    .header {
+        position: relative;
+        text-align: center;
+        background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+        color: white;
+    }
+    
+    .logo {
+        width: 50px;
+        fill: white;
+        padding-right: 15px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .inner-header {
+        height: 40vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .flex {
+        /*Flexbox for containers*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .waves {
+        position: relative;
+        width: 100%;
+        height: 10vh;
+        margin-bottom: -7px;
+        /*Fix for safari gap*/
+        min-height: 100px;
+        max-height: 150px;
+    }
+    
+    .content {
+        position: relative;
+        height: 20vh;
+        text-align: center;
+        background-color: white;
+    }
+    /* Animation */
+    
+    .parallax>use {
+        animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+    }
+    
+    .parallax>use:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 7s;
+    }
+    
+    .parallax>use:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 10s;
+    }
+    
+    .parallax>use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 13s;
+    }
+    
+    .parallax>use:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 20s;
+    }
+    
+    @keyframes move-forever {
+        0% {
+            transform: translate3d(-90px, 0, 0);
+        }
+        100% {
+            transform: translate3d(85px, 0, 0);
+        }
+    }
+    /*Shrinking for mobile*/
+    
+    @media (max-width: 768px) {
+        .waves {
+            height: 40px;
+            min-height: 40px;
+        }
+        .content {
+            height: 30vh;
+        }
+        h1 {
+            font-size: 24px;
+        }
+    }
+
+    textarea{
+        color: #0067b8;
+        font-size: 12px;
+        background-color: #0068b810;
+    }
+    table, th, td {
+        user-select: text;
+        text-align: center;
+  border:1px solid black;
+}
+li{
+    font-size: 13px;
+}
+</style>
+<script>
+</script>
+
+<body>
+    <!--Hey! This is the original version
+of Simple CSS Waves-->
+
+    <div class="header">
+
+        <!--Content before waves-->
+        <div class="inner-header flex">
+            <!--Just the logo.. Don't mind this-->
+
+            <path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
+            <g>
+                <path fill="#fff" d="M250.4,0.8C112.7,0.8,1,112.4,1,250.2c0,137.7,111.7,249.4,249.4,249.4c137.7,0,249.4-111.7,249.4-249.4
+    C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1-34.1-2.3-75.4,13.2-104.1
+    c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3,62.4c-19.8,19.1-51.6,26.9-100.2,24.6l1.8-39.7		c35.9,1.6,59.7-2.9,70.8-13.6c8.9-8.6,11.1-22.9,13.5-39.6c6.3-42,14.8-99.4,141.4-99.4h41L333,166c-12.6,16-45.4,68.2-31.2,96.2	c9.2,18.3,41.5,25.6,91.2,24.2l1.1,39.8C390.5,326.2,387.1,326.3,383.8,326.3z"
+                />
+            </g>
+            </svg>
+            <h1>Planned Site Failover</h1>
+            <br> <a href="/index.html" style="color: white;text-decoration: underline;">Home</a>
+        </div>
+
+        <!--Waves Container-->
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="parallax">
+    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+    </g>
+    </svg>
+        </div>
+        <!--Waves end-->
+
+    </div>
+    <!--Header ends-->
+    <br><br><br>
+
+
+    <!--Content ends-->
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!--<h2 class="section-heading">How to configure replication using replication support only </h2>-->
+                    
+<p>
+  <span class="head">Prerequisite: - No IPM files processing during planned site failover.</span> <br><br>
+    
+  <span class="head">Current AG Structure:</span> <br><br>
+
+  <table style="width: 100%;">
+<tr>
+    <th>Publisher AG</th>
+    <th>Reporting AG</th>
+    <th>CDistribution AG</th>
+  </tr>
+
+  <tr>
+      <td>CCSQL02</td>
+      <td>CCSQL01</td>
+      <td>RIC-DISTDB01</td>
+  </tr>
+  <tr>
+    <td>CCSQL01</td>
+    <td>RIC-RPTDB02</td>
+    <td>S-TEMP-DIST01</td>
+</tr>
+<tr>
+    <td>RIC-DB01</td>
+    <td>RIC-RPTDB01</td>
+    <td></td>
+</tr>
+<tr>
+    <td>RIC-DB02</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td>DRCCSQL01</td>
+    <td></td>
+    <td></td>
+</tr>
+</table>
+
+<br><br>
+
+<span class="head">Planned Site Failover Sequence:</span>
+
+<ul>
+    <li>Distribution AG failover</li>
+    <li>Reporting AG failover</li>
+    <li>Primary AG failover</li>
+</ul>
+
+<span class="head">Detailed Steps:
+<br><br>
+    Distribution AG failover
+    </span> <br><br>
+<ul>
+    <li>Step1: Check AlwaysOn/Replication Latency  - > DBA Team.</li>
+    <li>Step2: Disable Log reader/snapshot agent jobs on current primary server. ->DBA Team</li>
+    <li>Step3: Change the failover mode of distribution db AG from automatic to manual and always on mode from Async to Sync (if it is async)- > DBA Team.</li>
+    <li>Step4: Start Failover process from one instance to other. -> DBA Team</li>
+    <li>Step5: Validate failover is successful - > DBA Team.</li>
+</ul>
+
+<br><br>
+
+<span class="head">Reporting AG failover</span> <br><br>
+<ul>
+    <li>Step1: Check AlwaysOn Latency  - > DBA Team.</li>
+    <li>Step2: Disable Distribution agent jobs on current primary server. ->DBA Team</li>
+    <li>Step3: Change the failover mode of reporting db AG from automatic to manual and always on mode from Async to Sync - > DBA Team.</li>
+    <li>Step4: Start Failover process from one instance to other. -> DBA Team</li>
+    <li>Step5: Validate failover is successful - >  DBA Team.</li>
+    <li>Step6: Change the failover mode of reporting db AG from  manual to automatic with local secondary and manual with remote secondary. Also change always on sync mode from Sync to Async for remote secondary while it should be sync for local secondary - > DBA </li>
+</ul>
+
+<br><br>
+
+<span class="head">Primary AG failover</span> <br><br>
+<ul>
+    <li>Step1: Check AlwaysOn Latency  - > DBA Team.</li>
+    <li>Step2: Change the failover mode of primary db AG from automatic to manual and always on mode from Async to Sync - > DBA Team.</li>
+    <li>Step3: Start Failover process from one instance to other. -> DBA Team</li>
+    <li>Step4: Validate  failover is successful - >  DBA Team.</li>
+    <li>Step5: Change the failover mode of primary db AG from  manual to automatic with local secondary and manual with remote secondary. Also change always on sync mode from Sync to Async for remote secondary while it should be sync for local secondary - > DBA </li>
+    <li>Step6: Enable Log reader and Distribution agent jobs on respective primary server. ->DBA Team</li>
+</ul>
+
+<span class="head">Detailed AG failover Steps:
+    <br><br>
+    Limitations and Restrictions: 
+        </span> <br><br>
+
+    <ul>    <li>A failover command returns as soon as the target secondary replica has accepted the command. However, database recovery occurs asynchronously after the availability group has finished failing over.</li>
+    </ul> <br>
+
+<span class="head">Prerequisites for Using the Failover Availability Group Wizard: </span> <br><br>
+<ul>
+    <li>You must be connected to the server instance that hosts an availability replica that is currently available.</li>
+</ul>
+
+<span class="head">Permissions:</span> <br><br>
+<ul>
+    <li>Requires ALTER AVAILABILITY GROUP permission on the availability group, CONTROL AVAILABILITY GROUP permission, ALTER ANY AVAILABILITY GROUP permission, or CONTROL SERVER permission.</li>
+</ul>
+
+<span class="head">To Use the Failover Availability Group Wizard:</span> <br><br>
+
+<ul>
+    <li>In Object Explorer, connect to the server instance that hosts a secondary replica of the availability group that needs to be failed over, and expand the server tree.</li>
+<li>Expand the Always On High Availability node and the Availability Groups node.</li>
+<li>To launch the Failover Availability Group Wizard, right-click the availability group that you are going to fail over, and select Failover.</li>
+<li>The information presented by the Introduction page depends on whether any secondary replica is eligible for a planned failover. If this page says, "Perform a planned failover for this availability group", you can failover the availability group without data loss.</li>
+<li>On the Select New Primary Replica page, you can view the status of the current primary replica and of the WSFC quorum, before you choose the secondary replica that will become the new primary replica (the failover target). For a planned manual failover, be sure to select a secondary replica whose Failover Readiness value is "No data loss". For a forced failover, for all the possible failover targets, this value will be "Data loss, Warnings(#)", where # indicates the number of warnings that exist for a given secondary replica. To view the warnings for a given failover target, click its "Failover Readiness" value.</li>
+<li>On the Connect to Replica page, connect to the failover target.</li>
+<li>On the Summary page, review the implications of failing over to the selected secondary replica. <br>
+    If you are satisfied with your selections, optionally click Script to create a script of the steps the wizard will execute. Then, to failover the availability group to the selected secondary replica, click Finish.
+    </li>
+<li>The Progress page displays the progress of failing over the availability group.</li>
+</ul>
+
+
+</p>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer--><br><br><br>
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="https://www.linkedin.com/company/scalability-engineers/?viewAsMember=true">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/scalabilityengineers/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.instagram.com/scalabilityengineers/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; Scalability Enigineers</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

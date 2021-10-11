@@ -109,7 +109,7 @@
                 <p></p> <br>
                 <a href="#"></a>
             </div>
-            <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://raw.githubusercontent.com/alokkaintura/alok/master/undraw_Organizing_projects_0p9a.svg" class="mx-auto" alt="slide"></div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://i.pinimg.com/originals/09/3f/18/093f1861fc92b3a0ba497ece177b27e6.gif" class="mx-auto" alt="slide"></div>
         </div>
     </div>
     </div>
@@ -183,6 +183,8 @@
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
+                            <p class="btn btn-primary" data-toggle="modal" data-target=".cpuconsuming" style="border-radius: 500px;background-color: white;border-color: white;color: #0067b8; font-size: 13px;font-weight: 500;text-decoration: underline;">Top CPU Consuming Quries</p>
+<br>
                             <p>SQL Jobs</p>
                             <ul>
                                 <li>&#8226 Find jobs which are not owned by SA</li>
@@ -425,16 +427,16 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-header" id="headingnine">
+                    <div class="card-header" id="headingten">
                         <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsenine" aria-expanded="false" aria-controls="collapsenine">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseten" aria-expanded="false" aria-controls="collapsenine">
                                 9. SQL Server Security
 
 
               </button>
                         </h2>
                     </div>
-                    <div id="collapsenine" class="collapse" aria-labelledby="headingright" data-parent="#accordionExample">
+                    <div id="collapseten" class="collapse" aria-labelledby="headingright" data-parent="#accordionExample">
                         <div class="card-body">
                             <p>Logins
                             </p>
@@ -467,101 +469,6 @@
                             </p>
                             <p>SQL Server Security
 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <div class="card-header" id="headingten">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseten" aria-expanded="false" aria-controls="collapseten">
-                                10. System Databases
-
-
-              </button>
-                        </h2>
-                    </div>
-                    <div id="collapseten" class="collapse" aria-labelledby="headingright" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Master
-
-
-                            </p>
-                            <p><a href="sop/Always On Failover-converted.pdf"> Restore</a>
-
-                            </p>
-                            <p>Start up stored procedure in the master database
-
-
-                            </p>
-                            <p>Linked Server Setup , Properties, & Meta Data
-
-
-                            </p>
-                            <p>Model
-
-
-                            </p>
-                            <p>MSDB
-
-
-                            </p>
-                            <p>TempDB
-
-
-                            </p>
-                            <p>TempDB Best Practices
-
-
-                            </p>
-                            <p>Resource database
-
-
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="headingeleven">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseeleven" aria-expanded="false" aria-controls="collapseeleven">
-                                11. System Objects
-
-
-              </button>
-                        </h2>
-                    </div>
-                    <div id="collapseeleven" class="collapse" aria-labelledby="headingright" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Linked Server- Introduction
-
-
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="headingtwelve">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsetwelve" aria-expanded="false" aria-controls="collapsetwelve">
-                                12. Trace Flags
-
-
-              </button>
-                        </h2>
-                    </div>
-                    <div id="collapsetwelve" class="collapse" aria-labelledby="headingright" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Introduction about the trace flags
-                            </p>
-                            <p>Setting up trace flag and viewing the currently used trace flags
-
-                            </p>
-                            <p>Local Vs global Vs startup parameter trace flag
                             </p>
                         </div>
                     </div>
@@ -994,6 +901,83 @@ WHERE  DistributionAgent.subscriber_db <> 'virtual'</textarea>
     </div>
 </div>
 </div>
+
+  <!------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         -->
+    <!-- Admin DB -->
+
+    <div class="modal fade cpuconsuming" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding: 20px;">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+                <br>
+
+                <p style="font-size: 13px;color: green;">
+                    /* <br><br>
+
+                    Get data for 3 tabs - top CPU consuming queries for specific time duration.<br>
+                    1. Replace the time frame start_time and end_time<br>
+                    2. Run all 3 queries and arrange data in differen tab<br><br>
+                    
+                    Run queries on Remote server where long running data is loaded. Generatlly it is reporting server <br>
+                        and database name is ADMIN_<PRIMARY_SERVER_NAME><br>
+                            <br>
+                    */<br></p>
+                <br>
+                <textarea id="cpuconsuming" cols="90" rows="17" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                    declare @start_time datetime = '2021-09-12 05:27:46' 
+                    declare @end_time datetime = '2021-09-12 05:37:44'
+                    
+                    -- Data in excel Tab - 'Query-cumulative'
+                    select SUBSTRING(STATEMENT, 1,200) qry, count(1) cnt, sum(logical_reads + physical_reads) reads, sum(cpu_time_ms) cpu_time_ms, sum(writes) writes--, sum(duration) duration
+                    from t_dba_XE_Master_TraceData_collect_longrunningqueries
+                    where event_server_time between @start_time and @end_time
+                    AND ( OBJECT_NAME IS NULL or OBJECT_NAME ='')
+                    group by SUBSTRING(STATEMENT, 1,200)
+                    order by sum(cpu_time_ms) desc
+                    
+                    -- Data in excel Tab - 'Proc-cumulative'
+                    select object_name proc_name , count(1) cnt, sum(logical_reads + physical_reads) reads, sum(cpu_time_ms) cpu_time_ms, sum(writes) writes--, sum(duration) duration
+                    from t_dba_XE_Master_TraceData_collect_longrunningqueries
+                    where event_server_time between @start_time and @end_time
+                    AND ( OBJECT_NAME IS not  NULL and OBJECT_NAME <>'')
+                    --and object_name like '%getbsp%'
+                    group by object_name
+                    --order by sum(logical_reads + physical_reads) desc
+                    order by sum(cpu_time_ms) desc
+                    
+                    
+                    -- Data in excel Tab - 'Top_cpu_Queries'
+                    
+                    select top 200 event_server_time, database_name, client_hostname, client_app_name, duration_ms, query_hash, session_id, cpu_time_ms, physical_reads
+                    ,logical_reads, writes, object_name, statement, sql_text, server_principal_name
+                    from t_dba_XE_Master_TraceData_collect_longrunningqueries
+                    where event_server_time between @start_time and @end_time
+                    order by (cpu_time_ms) desc</textarea>
+                <br>
+
+                <!-- Trigger -->
+                <button class="btn" data-clipboard-action="copy" data-clipboard-target="#cpuconsuming" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
+                        Copy to clipboard
+                    </button>
+
+                </p> <br>
+                <br>
+                <!-- Trigger -->
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
     <!------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
