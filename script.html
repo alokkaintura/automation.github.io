@@ -56,6 +56,7 @@
             user-select: text;
         }
         /**clipboard*/
+        
     </style>
     <script>
     </script>
@@ -155,7 +156,8 @@
                                 <li>&#8226 Error message troublshooting</li>
                                 <li>&#8226 Tracer Token</li>
                             </ul>
-                            <p>Replication Monitoring</p>
+                            <p class="btn btn-primary" data-toggle="modal" data-target=".replicationmonitoring" style="border-radius: 500px;background-color: white;border-color: white;color: #0067b8; font-size: 13px;font-weight: 500;text-decoration: underline;">Replication Monitoring</p>
+                        
                             <ul>
                                 <li>&#8226 sp_replcounter</li>
                                 <li>&#8226 Distribution to Subsriber latency</li>
@@ -164,6 +166,9 @@
                             </ul>
                             <p>Replication configuration</p>
                             <ul>
+                                <li><p class="btn btn-primary" data-toggle="modal" data-target=".addingarticle" style="border-radius: 500px;background-color: white;border-color: white;color: #0067b8; font-size: 13px;font-weight: 500;text-decoration: underline;">Replication Monitoring</p>
+                                    
+                                </li>
                                 <li>&#8226 Add complete article</li>
                                 <li>&#8226 Add article with limited columns</li>
                                 <li>&#8226 Add publication snapshot</li>
@@ -184,6 +189,8 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
                             <p class="btn btn-primary" data-toggle="modal" data-target=".cpuconsuming" style="border-radius: 500px;background-color: white;border-color: white;color: #0067b8; font-size: 13px;font-weight: 500;text-decoration: underline;">Top CPU Consuming Quries</p>
+<br>
+<p class="btn btn-primary" data-toggle="modal" data-target=".tracecheck" style="border-radius: 500px;background-color: white;border-color: white;color: #0067b8; font-size: 13px;font-weight: 500;text-decoration: underline;">Admin DB Trace Check</p>
 <br>
                             <p>SQL Jobs</p>
                             <ul>
@@ -221,6 +228,7 @@
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                         <div class="card-body">
+                            <p class="btn btn-primary" data-toggle="modal" data-target=".backupdetails" style="border-radius: 500px;background-color: white;border-color: white;color: #0067b8; font-size: 13px;font-weight: 500;text-decoration: underline;">Backup Details</p>
                             <p>Migrating database from one instance to another
                             </p>
                             <p>Take simple backup
@@ -884,7 +892,7 @@ Below is the script:*/<br></p>
        [Pub - DB - Publication - SUB - AgentID] 
 FROM   distribution.dbo.msdistribution_agents DistributionAgent 
 WHERE  DistributionAgent.subscriber_db <> 'virtual'</textarea>
-            <!-- Trigger -->
+         
             <button class="btn" data-clipboard-action="copy" data-clipboard-target="#tsqlcode" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
                 Copy to clipboard
             </button>
@@ -895,12 +903,224 @@ WHERE  DistributionAgent.subscriber_db <> 'virtual'</textarea>
 
             </p> <br>
             <br>
-            <!-- Trigger -->
+         
 
         </div>
     </div>
 </div>
 </div>
+
+
+    <!-------------------------- Replication config.  =>  ADDING A ARTICLE IN THE EXISTING REPLICATION------------------------->
+
+    <div class="modal fade addingarticle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding: 20px;">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+                <br>
+
+                <p style="font-size: 13px;color: rgb(6, 163, 6);">
+                    <br>
+    
+                  <span style="font-size: 15;font-weight: bold">Description</span><br><br>
+                  We can add a article in the existing replication by the following given queries. These queries are executed step by step to avoid any issue. This query has 3 specific steps mentioned below.<br>
+                  1.	Changes Publication properties – In the step the two properties value of the publication are changed to false. So that the user can add the article in the existing replication. The properties are “allow_anonymous” and “'immediate_sync”. <br>
+                  2.	Add Article—This step adds the article into the replication. We just need to provide the parameters like article name, Publication Name, Pre-Creation commands, schema option etc.<br>
+                  3.	Refresh The Publication – This command refreshes the publication by executing a SP with the publication name. <br><br>
+                  There can be 4th step too in case of snapshot replication. We need to run the snapshot agent after performing the above 3 steps, but if replication type is support only, then we do not require to run the snapshot agent.<br>
+                  <br>
+                    
+                            
+                    </p>
+                <br>
+    
+                <span style="font-size: 15;font-weight: bold">Query 1</span><br><br>
+                <span style="font-size: 15;font-weight: bold">--Changes Publication properties </span><br>
+                <textarea id="addingarticle" cols="90" rows="18" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                    EXEC sp_changepublication 
+                    @publication =Trans_Publication_Final_CI_Snapshot, 
+                    @property = 'allow_anonymous' , 
+                    @value = 'false' 
+                    
+                    EXEC sp_changepublication 
+                    @publication = Trans_Publication_Final_CI_Snapshot, 
+                    @property = 'immediate_sync' , 
+                    @value = 'false' 
+                    
+                    --- Add Article
+                    
+                     DECLARE @tableName VARCHAR(500)
+                     DECLARE @P_ins_cmd VARCHAR(500)
+                     DECLARE @p_del_cmd VARCHAR(500)
+                     DECLARE @p_upd_cmd VARCHAR(500)
+                    
+                     SET @tableName = ‘table_name’---- REPLACE WITH THE TABLE NAME WE WANT TO ADD
+                     SET @P_ins_cmd = N'CALL [dbo].[sp_MSins_dbo'  + @tableName + ']'
+                     SET @p_del_cmd = N'CALL [dbo].[sp_MSdel_dbo'  + @tableName + ']' 
+                     SET @p_upd_cmd = N'CALL [dbo].[sp_MSupd_dbo'  + @tableName  + ']'
+                    
+                     EXEC SP_ADDARTICLE @publication = N'Trans_Publication_Final_CI_Snapshot'
+                      , @article = @tableName, @source_owner = N'dbo'
+                      , @source_object = @tableName, @type = N'logbased', @description = null
+                      , @creation_script = null, @pre_creation_cmd = N'drop', @schema_option = 0x000001400C0350DF
+                      , @identityrangemanagementoption = N'manual', @destination_table = @tableName
+                      , @destination_owner = N'dbo', @vertical_partition = N'false'
+                      , @ins_cmd = @P_ins_cmd
+                      , @del_cmd = @p_del_cmd 
+                      , @upd_cmd = @p_upd_cmd
+                    
+                    
+                    --- Refresh Publication
+                    
+                     EXEC SP_REFRESHSUBSCRIPTIONS @publication = N'Trans_Publication_Final_CI_Snapshot'
+                    
+                    
+                </textarea>
+                <br>
+                <button class="btn" data-clipboard-action="copy" data-clipboard-target="#addingarticle" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
+                        Copy to clipboard
+                    </button>
+    
+                 <br>
+               
+     
+                  <br>
+            </div>
+        </div>
+    </div>
+    </div>
+
+     <!--------------------------REPLICATION MONITORING------------------------->
+
+
+     <div class="modal fade replicationmonitoring" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding: 20px;">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+                <br>
+
+                <p style="font-size: 13px;color: rgb(6, 163, 6);">
+                    <br>
+    
+                  <span style="font-size: 15;font-weight: bold">Description</span><br><br>
+                  1.	Check Pending Commands – Query is used to check pending commands from distributor to subscriber. The values to the parameters are provided specific to the publication, subscription, publisher db , subscription db and replication. These parameters will differ accordingly.<br>
+                  2.	Dist To Sub Latency – The given query is used to provide the Latency of commands from distributor to subscriber end.
+                  3.	Pub To Sub Latency – We use the proc to check the latency from publisher db to subscriber db.<br>
+                  4.	Replicating Columns – The query is used when the user needs to check the replication columns of a specific table in a publication.<br>
+                  5.	Script Out Custom Procs – Sometimes there can be an error of some missing proc on the subscription end. Then by using the mention proc with the publication name we can get the script of that proc by running the query on publisher DB.<br>
+                  6.	When Subscription is Inactive – If user needs to know the subscription state, then it can be found by the given select query and if it is inactive means 0 then can be made active by given update query.<br>
+                  7.	Table Which Are Part of Replication – The query result set provides the list of the tables which are part of replication in the selected db.<br>
+                  8.	To Get Transaction Count – We can use the given queries to get the count of the transaction from distribution db. <br>
+                   <br>
+                    
+                            
+                    </p>
+                <br>
+    
+                <span style="font-size: 15;font-weight: bold">Queries</span><br><br>
+                <span style="font-size: 15;font-weight: bold">--Check Pending Commands</span><br>
+                <textarea id="replicationmonitoring" cols="90" rows="18" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                    USE DISTRIBUTION
+                    GO
+                    EXECUTE sp_replmonitorsubscriptionpendingcmds  
+                      @publisher ='LAPTOP-A0TI5JNU', -- Put publisher server name here
+                      @publisher_db = 'northwind', -- Put publisher database name here
+                      @publication ='Northwind_Trans_Pub',  -- Put publication name here
+                      @subscriber ='LAPTOP-A0TI5JNU\MSSQLSERVER02', -- Put subscriber server name here
+                      @subscriber_db ='Northwind_RPT', -- Put subscriber database name here
+                      @subscription_type ='0' -- 0 = push and 1 = pull
+                    
+                    --Dist To Sub Latency 
+                    
+                    USE distribution
+                    go
+                    
+                    SELECT ma2.publisher_db,
+                       mh1.delivery_latency / ( 1000 * 60 ) AS delivery_latency_Minutes,
+                       mh1.agent_id ,
+                       mh1.time, 
+                       CAST(mh1.comments AS XML) AS comments, 
+                       CASE mh1.runstatus
+                          WHEN 1 THEN 'Start'
+                          WHEN 2 THEN 'Succeed.'
+                          WHEN 3 THEN 'In progress.'
+                          WHEN 4 THEN 'Idle.'
+                          WHEN 5 THEN 'Retry.'
+                          WHEN 6 THEN 'Fail'
+                       END AS Status,
+                       mh1.duration, 
+                       mh1.xact_seqno, 
+                       mh1.delivered_transactions, 
+                       mh1.delivered_commands, 
+                       mh1.average_commands, 
+                       mh1.delivery_time, 
+                       mh1.delivery_rate, 
+                       ma2.name as jobname
+                    FROM mslogreader_history mh1 
+                       JOIN (
+                          SELECT mh1.agent_id, MAX(mh1.time) as maxtime
+                          FROM mslogreader_history mh1
+                             JOIN MSlogreader_agents ma on ma.id = mh1.agent_id
+                          GROUP BY mh1.agent_id) AS mh2 ON mh1.agent_id = mh2.agent_id and mh1.time = mh2.maxtime
+                       JOIN MSlogreader_agents ma2 on ma2.id = mh2.agent_id  
+                    ORDER BY mh1.delivery_latency desc
+                    
+                    --Pub To Sub Latency
+                    EXEC Admin..[p_dba_HOW_FAR_IS_Replication]
+                    
+                    --Replicating Columns
+                    
+                    USE MES_PROD_AP
+                    GO
+                    sp_helparticlecolumns  @publication = N'PROD_HIST_Pub' ,  @article =  'tb_Branch_Plant'
+                    
+                    --Script Out Custom Procs
+                    
+                    sp_scriptPublicationcustomprocs @publication='ICICI'
+                    
+                    --When Subscription is Inactive
+                    
+                    select * from MSsubscriptions where publisher_db = ''  -- check status column, if its 0 then need to update to 2, above is the update query
+                    
+                    Update [MSsubscriptions] Set [status] = 2 where publisher_db = 'PERF_CR_Coreissue'
+                    
+                    
+                    --Table Which Are Part Of Replication
+                    
+                    SELECT * FROM sys.tables WHERE is_replicated = 1
+                    
+                    
+                    --- To Get Transaction Count 
+                    
+                    select m.publisher_db,article,COUNT(ARTICLE) 'tranCount' from MSrepl_commands r left join dbo.MSarticles m
+                    on r.publisher_database_id = m.publication_id GROUP BY article,m.publisher_db
+                     
+                    select distinct m.publisher_db, article,m.article_id from MSrepl_commands r left join dbo.MSarticles m
+                    on r.publisher_database_id = m.publication_id
+                    
+                    
+                    
+                </textarea>
+                <br>
+                <button class="btn" data-clipboard-action="copy" data-clipboard-target="#replicationmonitoring" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
+                        Copy to clipboard
+                    </button>
+    
+                 <br>
+               
+     
+                  <br>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -917,7 +1137,7 @@ WHERE  DistributionAgent.subscriber_db <> 'virtual'</textarea>
                 </div>
                 <br>
 
-                <p style="font-size: 13px;color: green;">
+                <p style="font-size: 13px;color: rgb(6, 163, 6);">
                     /* <br><br>
 
                     Get data for 3 tabs - top CPU consuming queries for specific time duration.<br>
@@ -976,10 +1196,159 @@ WHERE  DistributionAgent.subscriber_db <> 'virtual'</textarea>
     </div>
 
 
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------->
+
+<div class="modal fade tracecheck" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="padding: 20px;">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+            <br>
+
+            <p style="font-size: 13px;color: rgb(6, 163, 6);">
+                <br>
+
+              <span style="font-size: 15;font-weight: bold">Description</span><br><br>
+                The below queries are used to check the data insertion of the trace which are being captured on the servers by extended events or system traces. Generally, there are four type of common traces which are being captured by the session on the same or remote server. The sessions are as follows. <br>
+                1.	Long Running Queries (Completed Queries above 2 Sec). <br>
+                2.	Short Blocking (Blocking Below 3 Sec).<br>
+                3.	Audit Agent Jobs.<br>
+                4.	DDL Audit Changes.<br>
+                
+                        
+                </p>
+            <br>
+
+            <span style="font-size: 15;font-weight: bold">Query 1</span><br>
+            <textarea id="query1" cols="90" rows="1" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                select top 1 * from t_dba_XE_Master_TraceData_collect_longrunningqueries order by 4 desc
+            </textarea>
+            <br>
+            <button class="btn" data-clipboard-action="copy" data-clipboard-target="#query1" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
+                    Copy to clipboard
+                </button>
+
+             <br><br>
+
+             <span style="font-size: 15;font-weight: bold">Query 2</span><br>
+             <textarea id="query2" cols="90" rows="1" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                select top 1 * from t_dba_XE_Master_TraceData_collect_Shortblocking order by 4 desc
+             </textarea>
+             <br>
+             <button class="btn" data-clipboard-action="copy" data-clipboard-target="#query2" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
+                     Copy to clipboard
+                 </button>
+ 
+              <br>
+            <br>
+            <span style="font-size: 15;font-weight: bold">Query 3</span><br>
+            <textarea id="query3" cols="90" rows="1" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                select top 1 * from t_dba_XE_Master_TraceData_collect_AuditAgentJobs order by 4 desc
+            </textarea>
+            <br>
+            <button class="btn" data-clipboard-action="copy" data-clipboard-target="#query3" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
+                    Copy to clipboard
+                </button>
+
+             <br>
+             <span style="font-size: 15;font-weight: bold">Query 4</span><br>
+             <textarea id="query4" cols="90" rows="1" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                select top 1 * from t_dba_XE_Master_TraceData_Collect_DDLAuditChanges order by 4 desc
+             </textarea>
+             <br>
+             <button class="btn" data-clipboard-action="copy" data-clipboard-target="#query4" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
+                     Copy to clipboard
+                 </button>
+ 
+              <br>
+            <!-- Trigger -->
+
+        </div>
+    </div>
+</div>
+</div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         -->
+    <!--Backup Details  -->
+
+<div class="modal fade backupdetails" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="padding: 20px;">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+            <br>
+
+            <p style="font-size: 13px;color: rgb(6, 163, 6);">
+                <br>
+
+              <span style="font-size: 15;font-weight: bold">Description</span><br><br>
+              The below query provides the information of the last 100 backups which has been done on the server. We can use the following query to get every backup detail which has happened in the past. The query can provide the details by database wise and backup type (Full, Differential, Log Backup) wise too. The query result set includes the below information columns.<br>
+              1.	DB Name.<br>
+              2.	Backup File Location.<br>
+              3.	Backup Size (Compressed and Un-Compressed Both).<br>
+              4.	Time Taken. <br>
+              5.	Backup Type. <br>
+              6.	Backup Start Date. <br>
+              7.	Backup Finish Date. <br>
+              
+                
+                        
+                </p>
+            <br>
+
+            <span style="font-size: 15;font-weight: bold">Query</span><br>
+            <textarea id="backupdetails" cols="90" rows="14" style="color: #0067b8;font-weight: 600;user-select: text;font-size: 12px;">
+                SELECT TOP 100
+                s.database_name,
+                m.physical_device_name,
+                CAST(CAST(s.backup_size / 1000000 AS INT) AS VARCHAR(14)) + ' ' + 'MB' AS BkpSize,
+                CAST(CAST(s.compressed_backup_size/1024/1024/1024 AS INT)AS VARCHAR (14)) + ' ' + 'GB' AS Bkp_Compressed,
+                CAST(DATEDIFF(second, s.backup_start_date,
+                s.backup_finish_date)/60 AS VARCHAR(4)) + ' ' + 'Minutes' TimeTaken,
+                s.backup_start_date,
+                CASE s.[type] WHEN 'D' THEN 'Full'
+                WHEN 'I' THEN 'Differential'
+                WHEN 'L' THEN 'Transaction Log'
+                END AS BkpType,
+                s.server_name
+                FROM msdb.dbo.backupset s
+                INNER JOIN msdb.dbo.backupmediafamily m ON s.media_set_id = m.media_set_id
+                --WHERE s.database_name = DB_NAME() -- Remove this line for all the database
+                WHERE s.type = 'I'
+                ORDER BY backup_start_date DESC, backup_finish_date
+                GO
+                
+            </textarea>
+            <br>
+            <button class="btn" data-clipboard-action="copy" data-clipboard-target="#backupdetails" style="background-color: rgb(252, 252, 252);font-weight: 500;width: 400px;margin: auto;">
+                    Copy to clipboard
+                </button>
+
+             <br>
+
+            
+ 
+              <br>
+            <!-- Trigger -->
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
 
 
     <!------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------ Indexes-------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
          -->
     <!-- Online rebuild indexes  -->
